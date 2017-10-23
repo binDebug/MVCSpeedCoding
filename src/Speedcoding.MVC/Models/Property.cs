@@ -7,6 +7,8 @@ namespace Speedcoding.MVC.Models
 {
     public class Property
     {
+        public int ID { get; set; }
+
         public PropertyType Type { get; set; }
 
         public Location Location { get; set; }
@@ -19,7 +21,7 @@ namespace Speedcoding.MVC.Models
 
         public string AreaUnit { get; set; }
 
-        public int Price { get; set; }
+        public IList<Image> Images { get; set; }
     }
 
     public enum PropertyType

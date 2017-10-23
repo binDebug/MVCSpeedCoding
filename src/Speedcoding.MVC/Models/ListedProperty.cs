@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace Speedcoding.MVC.Models
 {
-    public class PurchasedProperty : Property
+    public class ListedProperty : Property
     {
-        public DateTime PurchasedDate { get; set; }
+        public bool IsFavorited { get; set; }
+
+        public int Price { get; set; }
     }
 }

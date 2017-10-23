@@ -7,11 +7,13 @@ namespace Speedcoding.MVC.Models
 {
     public class Review
     {
+        public int ID { get; set; }
+
         public string ReviewdBy { get; set; }
 
         public DateTime ReviewDate { get; set; }
 
-        public PurchasedProperty Property { get; set; }
+        public Sale Property { get; set; }
 
         public decimal LocalKnowledge { get; set; }
 
@@ -20,6 +22,8 @@ namespace Speedcoding.MVC.Models
         public decimal Responsiveness { get; set; }
 
         public decimal NegotiationSkills { get; set; }
+
+        public decimal Average { get; set; }
 
         public string Description { get; set; }
     }

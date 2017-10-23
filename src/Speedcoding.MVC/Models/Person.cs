@@ -13,10 +13,20 @@ namespace Speedcoding.MVC.Models
 
         public string About { get; set; }
 
+        public string Brokerage { get; set; }
+
+        public int ID { get; set; }
+
+        public IList<string> Specialties { get; set; }
+
+        public IList<string> LicenseNumbers { get; set; }
+
         public IList<Property> ActiveListings { get; set; }
 
         public IList<Review> Reviews { get; set; }
 
-        public IList<PurchasedProperty> PastSales { get; set; }
+        public Review AverageReview { get; set; }
+
+        public IList<Sale> PastSales { get; set; }
     }
 }
