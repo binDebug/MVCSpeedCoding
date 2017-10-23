@@ -1,84 +1,13 @@
 ﻿@model Speedcoding.MVC.Models.Person
-    @{
-        ViewData["Title"] = "Agent profile";
-    }
+@{
+    ViewData["Title"] = "Agent profile";
+}
 
-    <div id="content" class="c-content" style="padding-bottom: 309px;">
+<div id="content" class="c-content" style="padding-bottom: 309px;">
     <div class="c-content__wrap">
         <div class="l-container">
             <div class="c-content__agent-profile h-clearfix">
-                <div class="c-content__agent-overview l-col l-col-8">
-                    <div class="c-content__agent-card">
-                        <h1>Melissa Crosby</h1>
-                        <div class="c-content__agent-profile-photo">
-                            <img src="images/agent5.png" alt="">
-                        </div>
-                        <div class="c-content__rating c-content__rating--agent">
-                            <div class="c-content__rating-stars">
-                                <span class="c-content__rating-star c-content__rating-star--full"></span>
-                                <span class="c-content__rating-star c-content__rating-star--full"></span>
-                                <span class="c-content__rating-star c-content__rating-star--full"></span>
-                                <span class="c-content__rating-star c-content__rating-star--full"></span>
-                                <span class="c-content__rating-star c-content__rating-star--half-full"></span>
-                            </div>
-                            <div class="c-content__rating-info">
-                                <div class="c-content__rating-average">4.5</div>
-                                <a href="#" class="c-content__agent-review-count">16</a>
-                            </div>
-                        </div>
-                        <div class="c-content__skill-bars c-content__skill-bars--agent">
-                            <div class="c-content__skill-bar">
-                                <div class="c-content__skill-bar-title">Local knowledge</div>
-                                <div class="c-content__skill-bar-average">4.5</div>
-                                <div class="c-content__skill-bar-row--default">
-                                    <div class="c-content__skill-bar-row" style="width:90%;"></div>
-                                </div>
-                            </div>
-                            <div class="c-content__skill-bar">
-                                <div class="c-content__skill-bar-title">Process expertise</div>
-                                <div class="c-content__skill-bar-average">4.2</div>
-                                <div class="c-content__skill-bar-row--default">
-                                    <div class="c-content__skill-bar-row" style="width:84%;"></div>
-                                </div>
-                            </div>
-                            <div class="c-content__skill-bar">
-                                <div class="c-content__skill-bar-title">Responsiveness</div>
-                                <div class="c-content__skill-bar-average">5.0</div>
-                                <div class="c-content__skill-bar-row--default">
-                                    <div class="c-content__skill-bar-row" style="width:100%;"></div>
-                                </div>
-                            </div>
-                            <div class="c-content__skill-bar">
-                                <div class="c-content__skill-bar-title">Negotiation Skills</div>
-                                <div class="c-content__skill-bar-average">4.1</div>
-                                <div class="c-content__skill-bar-row--default">
-                                    <div class="c-content__skill-bar-row" style="width:82%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-content__agent-desc">
-                        <h4 class="l-border">About</h4>
-                        <p>
-                            Being a full-service Realtor since 2007, I have been baptized by fire in a very tough housing market. I have successfully closed over 60 transactions and
-                            processed over 70 short sales both as the listing agent and some for other agents. I am very knowledgeable about lenders and their processes. I strive to
-                            exceed expectations and never forget that I am always accountable to my clients.
-                        </p>
-                        <p>
-                            My objective is to establish relationships for life, not just for the current transaction. I enjoy assisting home buyers and sellers to get moved to a
-                            better place, one that is exciting.
-                        </p>
-                        <p class="l-small">
-                            <strong>Brokerage:</strong> Berkshire Hathaway HomeServices Elite Real Estate
-                        </p>
-                        <p class="l-small">
-                            <strong>Specialties:</strong> Property Management, Buyer’s Agent, Listing Agent…
-                        </p>
-                        <p class="l-small">
-                            <strong>License Number(s):</strong> #5452129
-                        </p>
-                    </div>
-                </div>
+                @Html.Partial("_Profile", Model)
                 @Html.Partial("_SubmitForm", Model)
             </div>
             <div class="l-divider l-divider--big"></div>
@@ -173,7 +102,6 @@
                                     $345,000
                                 </div>
                                 <div class="c-content__property-price-changes c-content__property-price-changes--none">
-
                                 </div>
                             </div>
                         </div>

@@ -23,6 +23,16 @@ namespace Speedcoding.MVC.Models
 
         public decimal NegotiationSkills { get; set; }
 
+        public int LocalKnowledgePercentage { get; set; }
+
+        public int ExpertisePercentage { get; set; }
+
+        public int ResponsivenessPercentage { get; set; }
+
+        public int NegotiationSkillsPercentage { get; set; }
+
+        public int AveragePercentage { get; set; }
+
         public decimal Average { get; set; }
 
         public string Description { get; set; }

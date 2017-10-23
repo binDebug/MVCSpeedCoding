@@ -1,4 +1,5 @@
-﻿using Speedcoding.MVC.Models;
+﻿using Speedcoding.MVC.Helpers;
+using Speedcoding.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Speedcoding.MVC.Repository
             this.PopulatePersonDetails(person);
             person.Reviews = this.GetReviews();
             person.PastSales = this.GetPastSales();
+            person.ProfilePic = Utility.GetImagePath("agent5.png");
             person.ActiveListings = this.GetActiveListing();
             this.PopulateAverageReview(person);
             return person;
@@ -35,7 +37,7 @@ namespace Speedcoding.MVC.Repository
             person.FirstName = "Melissa";
             person.LastName = "Crosby";
             person.About = "Being a full-service Realtor since 2007, I have been baptized by fire in a very tough housing market. I have successfully closed over 60 transactions and processed over 70 short sales both as the listing agent and some for other agents. I am very knowledgeable about lenders and their processes. I strive to exceed expectations and never forget that I am always accountable to my clients."
-                + "\n" +
+                + "<br/><br/>" +
                 "My objective is to establish relationships for life, not just for the current transaction.I enjoy assisting home buyers and sellers to get moved to a better place, one that is exciting.";
             person.Brokerage = "Berkshire Hathaway HomeServices Elite Real Estate";
             person.Specialties = new List<string>();
@@ -234,6 +236,7 @@ namespace Speedcoding.MVC.Repository
                 Responsiveness = (decimal)5.0,
                 NegotiationSkills = (decimal)4.1,
                 Average = (decimal)4.5,
+
                 ReviewdBy = "russroberts",
                 Property = new Sale
                 {
@@ -418,14 +421,29 @@ namespace Speedcoding.MVC.Repository
             if ((person != null) &&
                 (person.Reviews != null) &&
                 (person.Reviews.Count > 0))
+            {
+                foreach (Review review in person.Reviews)
+                {
+                    review.LocalKnowledgePercentage = (int)Math.Ceiling(review.LocalKnowledge * 100 / 5);
+                    review.ExpertisePercentage = (int)Math.Ceiling(review.Expertise * 100 / 5);
+                    review.ResponsivenessPercentage = (int)Math.Ceiling(review.Responsiveness * 100 / 5);
+                    review.NegotiationSkillsPercentage = (int)Math.Ceiling(review.NegotiationSkills * 100 / 5);
+                    review.AveragePercentage = (int)Math.Ceiling(review.Average * 100 / 5);
+                }
                 person.AverageReview = new Review
                 {
                     LocalKnowledge = person.Reviews.Average(p => p.LocalKnowledge),
                     Expertise = person.Reviews.Average(p => p.Expertise),
                     Responsiveness = person.Reviews.Average(p => p.Responsiveness),
                     NegotiationSkills = person.Reviews.Average(p => p.NegotiationSkills),
-                    Average = person.Reviews.Average(p => p.Average)
+                    Average = person.Reviews.Average(p => p.Average),
+                    LocalKnowledgePercentage = (int)Math.Ceiling(person.Reviews.Average(p => p.LocalKnowledgePercentage)),
+                    ExpertisePercentage = (int)Math.Ceiling(person.Reviews.Average(p => p.ExpertisePercentage)),
+                    ResponsivenessPercentage = (int)Math.Ceiling(person.Reviews.Average(p => p.ResponsivenessPercentage)),
+                    NegotiationSkillsPercentage = (int)Math.Ceiling(person.Reviews.Average(p => p.NegotiationSkillsPercentage)),
+                    AveragePercentage = (int)Math.Ceiling(person.Reviews.Average(p => p.AveragePercentage))
                 };
+            }
         }
     }
 }

@@ -15,6 +15,8 @@ namespace Speedcoding.MVC.Models
 
         public string Brokerage { get; set; }
 
+        public string ProfilePic { get; set; }
+
         public int ID { get; set; }
 
         public IList<string> Specialties { get; set; }

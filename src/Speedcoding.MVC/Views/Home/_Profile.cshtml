@@ -1,0 +1,93 @@
+﻿@model Speedcoding.MVC.Models.Person
+
+<div class="c-content__agent-overview l-col l-col-8">
+    <div class="c-content__agent-card">
+        <h1>@Model.FirstName @Model.LastName</h1>
+        <div class="c-content__agent-profile-photo">
+            <img src="images/agent5.png" alt="">
+        </div>
+        <div class="c-content__rating c-content__rating--agent">
+            <div class="c-content__rating-stars">
+                @for (int i = 0; i < Math.Floor(Model.AverageReview.Average); i++)
+                {
+                    <span class="c-content__rating-star c-content__rating-star--full"></span>
+                }
+                @for (int i = 0; i < (Math.Ceiling(Model.AverageReview.Average) - Math.Floor(Model.AverageReview.Average)); i++)
+                {
+                    <span class="c-content__rating-star c-content__rating-star--half-full"></span>
+                }
+
+            </div>
+            <div class="c-content__rating-info">
+                <div class="c-content__rating-average">@Model.AverageReview.Average</div>
+                <a href="#" class="c-content__agent-review-count">@Model.Reviews.Count</a>
+            </div>
+        </div>
+        <div class="c-content__skill-bars c-content__skill-bars--agent">
+            <div class="c-content__skill-bar">
+                <div class="c-content__skill-bar-title">Local knowledge</div>
+                <div class="c-content__skill-bar-average">@Model.AverageReview.LocalKnowledge</div>
+                <div class="c-content__skill-bar-row--default">
+                    <div class="c-content__skill-bar-row" style="width:@Model.AverageReview.LocalKnowledgePercentage%;"></div>
+                </div>
+            </div>
+            <div class="c-content__skill-bar">
+                <div class="c-content__skill-bar-title">Process expertise</div>
+                <div class="c-content__skill-bar-average">@Model.AverageReview.Expertise</div>
+                <div class="c-content__skill-bar-row--default">
+                    <div class="c-content__skill-bar-row" style="width:@Model.AverageReview.ExpertisePercentage%;"></div>
+                </div>
+            </div>
+            <div class="c-content__skill-bar">
+                <div class="c-content__skill-bar-title">Responsiveness</div>
+                <div class="c-content__skill-bar-average">@Model.AverageReview.Responsiveness</div>
+                <div class="c-content__skill-bar-row--default">
+                    <div class="c-content__skill-bar-row" style="width:@Model.AverageReview.ResponsivenessPercentage%;"></div>
+                </div>
+            </div>
+            <div class="c-content__skill-bar">
+                <div class="c-content__skill-bar-title">Negotiation Skills</div>
+                <div class="c-content__skill-bar-average">@Model.AverageReview.NegotiationSkills</div>
+                <div class="c-content__skill-bar-row--default">
+                    <div class="c-content__skill-bar-row" style="width:@Model.AverageReview.NegotiationSkillsPercentage%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c-content__agent-desc">
+        <h4 class="l-border">About</h4>
+        <p>
+            @Html.Raw(Model.About)
+            
+        </p>
+        <p class="l-small">
+            <strong>Brokerage:</strong> @Model.Brokerage
+        </p>
+        <p class="l-small">
+            @{
+                var spec = string.Empty;
+                if ((Model.Specialties != null) && (Model.Specialties.Count > 0)) {
+                    spec = Model.Specialties.Take(3).Aggregate((p, q) => p + ", " + q);
+                    if (Model.Specialties.Count > 3)
+                    {
+                        spec = spec + "...";
+                    }
+                }
+
+            <strong>Specialties:</strong>  @spec
+            }
+        </p>
+        <p class="l-small">
+@{
+    var lic = string.Empty;
+    if ((Model.LicenseNumbers != null) && (Model.LicenseNumbers.Count > 0))
+    {
+        lic = Model.LicenseNumbers.Aggregate((p, q) => p + ", " + q);
+        
+    }
+
+            <strong>License Number(s):</strong> @lic
+    }
+        </p>
+    </div>
+</div>
