@@ -11,5 +11,9 @@ namespace Speedcoding.MVC.Helpers
         {
             return string.Concat("images/", path);
         }
+        public static string GetPropertyImagePath(string path)
+        {
+            return string.Concat("images/property/", path);
+        }
     }
 }

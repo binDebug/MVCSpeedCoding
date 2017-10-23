@@ -10,5 +10,9 @@ namespace Speedcoding.MVC.Models
         public bool IsFavorited { get; set; }
 
         public int Price { get; set; }
+        public decimal PriceChange { get; set; }
+        public int Direction { get; set; }
     }
+
+    
 }

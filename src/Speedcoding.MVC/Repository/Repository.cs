@@ -78,7 +78,7 @@ namespace Speedcoding.MVC.Repository
                     {
                         new Image
                         {
-                            Path="home5.jpg",
+                            Path= Utility.GetPropertyImagePath("home5.jpg"),
                             IsDefault=true
                         }
                     }
@@ -112,7 +112,7 @@ namespace Speedcoding.MVC.Repository
                     {
                         new Image
                         {
-                            Path="home4.jpg",
+                            Path=Utility.GetPropertyImagePath("home4.jpg"),
                             IsDefault=true
                         }
                     }
@@ -125,10 +125,11 @@ namespace Speedcoding.MVC.Repository
             newProperty = new Sale
             {
                 ID = 3,
+                Price = 529000,
                 Property = new Property
                 {
                     ID = 3,
-
+                    
                     NoBed = 6,
                     NoBath = (decimal)5.5,
                     Area = 5505,
@@ -146,7 +147,7 @@ namespace Speedcoding.MVC.Repository
                     {
                         new Image
                         {
-                            Path="home12.jpg",
+                            Path=Utility.GetPropertyImagePath("home12.jpg"),
                             IsDefault=true
                         }
                     }
@@ -159,6 +160,7 @@ namespace Speedcoding.MVC.Repository
             newProperty = new Sale
             {
                 ID = 4,
+                Price = 555000,
                 Property = new Property
                 {
                     ID = 4,
@@ -178,7 +180,7 @@ namespace Speedcoding.MVC.Repository
                     {
                         new Image
                         {
-                            Path="home6.jpg",
+                            Path=Utility.GetPropertyImagePath("home6.jpg"),
                             IsDefault=true
                         }
                     }
@@ -192,6 +194,7 @@ namespace Speedcoding.MVC.Repository
             newProperty = new Sale
             {
                 ID = 5,
+                Price = 1265000,
                 Property = new Property
                 {
                     ID = 5,
@@ -211,7 +214,41 @@ namespace Speedcoding.MVC.Repository
                     {
                         new Image
                         {
-                            Path="home7.jpg",
+                            Path=Utility.GetPropertyImagePath("home7.jpg"),
+                            IsDefault=true
+                        }
+                    }
+                },
+                PurchasedDate = new DateTime(2017, 07, 07),
+
+                RepresentedBy = "Seller"
+            };
+            properties.Add(newProperty);
+
+            newProperty = new Sale
+            {
+                ID = 6,
+                Price = 5290000,
+                Property = new Property
+                {
+                    ID = 6,
+                    NoBed = 6,
+                    NoBath = (decimal)5.5,
+                    Area = 5505,
+                    AreaUnit = "sqft",
+                    Location = new Location
+                    {
+                        DoorNo = "5160",
+                        Street = "Alzeda Dr",
+                        City = "La Mesa",
+                        State = "CA",
+                        Zip = "91941"
+                    },
+                    Images = new List<Image>
+                    {
+                        new Image
+                        {
+                            Path=Utility.GetPropertyImagePath("home7.jpg"),
                             IsDefault=true
                         }
                     }
@@ -325,11 +362,13 @@ namespace Speedcoding.MVC.Repository
                 NoBath = 3,
                 Area = 2785,
                 AreaUnit = "sqft",
+                PriceChange = (decimal)6.5,
+                Direction = -1,
                 Images = new List<Image>
                 {
                     new Image
                     {
-                        Path="home1.jpg",
+                        Path=Utility.GetPropertyImagePath("home1.jpg"),
                         IsDefault = true
                     },
                     new Image(),
@@ -359,11 +398,13 @@ namespace Speedcoding.MVC.Repository
                 NoBath = 3,
                 Area = 2785,
                 AreaUnit = "sqft",
+                PriceChange = (decimal)10,
+                Direction = 1,
                 Images = new List<Image>
                 {
                     new Image
                     {
-                        Path="home8.jpg",
+                        Path=Utility.GetPropertyImagePath("home8.jpg"),
                         IsDefault = true
                     },
                     new Image(),
@@ -397,7 +438,41 @@ namespace Speedcoding.MVC.Repository
                 {
                     new Image
                     {
-                        Path="home11.jpg",
+                        Path=Utility.GetPropertyImagePath("home11.jpg"),
+                        IsDefault = true
+                    },
+                    new Image(),
+                    new Image(),
+                    new Image(),
+                    new Image(),
+                    new Image(),
+                    new Image(),
+                    new Image(),
+                    new Image(),
+                    new Image()
+                }
+            };
+            properties.Add(property);
+
+            property = new ListedProperty
+            {
+                IsFavorited = false,
+                Price = 345000,
+                Location = new Location
+                {
+                    DoorNo = "472",
+                    Street = "Pendorsa Dr",
+                    City = "Alpine"
+                },
+                NoBed = 4,
+                NoBath = 3,
+                Area = 2785,
+                AreaUnit = "sqft",
+                Images = new List<Image>
+                {
+                    new Image
+                    {
+                        Path=Utility.GetPropertyImagePath("home11.jpg"),
                         IsDefault = true
                     },
                     new Image(),

@@ -1,0 +1,73 @@
+﻿@model  IList<Speedcoding.MVC.Models.Sale>
+<div>
+    <h3>Past Sales</h3>
+    <div class="c-content__sales">
+        <div class="c-content__sales-row">
+            <div class="c-content__sales-col c-content__sales-col--property">
+                Property
+            </div>
+            <div class="c-content__sales-col c-content__sales-col--details">
+                Details
+            </div>
+            <div class="c-content__sales-col c-content__sales-col--represented">
+                Represented
+            </div>
+            <div class="c-content__sales-col c-content__sales-col--price">
+                Price
+            </div>
+        </div>
+        @if ((Model != null) && (Model.Count > 0))
+        {
+            var count = 5;
+            if (Model.Count < 5)
+            {
+                count = Model.Count;
+            }
+            for (int i = 0; i < count; i++)
+            {
+            <div class="c-content__sales-row">
+                <div class="c-content__sales-col c-content__sales-col--property">
+                    <div class="c-content__sales-property-photo">
+                        <img src="@Model[i].Property.Images.First().Path" alt="">
+                    </div>
+                </div>
+                <div class="c-content__sales-col c-content__sales-col--details">
+                    <span class="c-content__sales-price">$@Model[i].Price</span>
+                    <span class="c-content__sales-location">@Model[i].Property.Location.City, @Model[i].Property.Location.State</span>
+                    <span class="c-content__sales-address">@Model[i].Property.Location.DoorNo @Model[i].Property.Location.Street • @Model[i].Property.Location.City, @Model[i].Property.Location.State @Model[i].Property.Location.Zip</span>
+                    <span class="c-content__sales-info">@Model[i].Property.NoBed bed, @Model[i].Property.NoBath bath, @Model[i].Property.Area sqft</span>
+                    <span class="c-content__sales-date">Sold date: @Model[i].PurchasedDate.ToString("MM/dd/yyyy")</span>
+                </div>
+                <div class="c-content__sales-col c-content__sales-col--represented">
+                    @Model[i].RepresentedBy
+                </div>
+                <div class="c-content__sales-col c-content__sales-col--price">
+                    $@Model[i].Price
+                </div>
+            </div>
+            }
+        }
+
+        
+    </div>
+
+    @if ((Model != null) && (Model.Count > 5))
+    {
+
+    <ul class="l-list l-list--pagination h-hide-on-mobile">
+        <li class="l-list__pagination-control l-list__pagination-control--prev l-list__pagination-control--disabled">
+            <a href="#"></a>
+        </li>
+        <li class="l-list__pagination-pages">
+            <span class="l-list-pagination__current">1</span>
+            <span class="l-list-pagination__pages-count">@(Math.Ceiling((decimal)Model.Count/5))</span>
+        </li>
+        <li class="l-list__pagination-control l-list__pagination-control--next">
+            <a href="#"></a>
+        </li>
+    </ul>
+    <div class="l-row l-row--center h-hide-on-desktop">
+        <a class="l-btn l-btn-more l-btn--blue l-btn-more--arrow-down" href="#"><span class="h-hide-on-mobile">See </span>More</a>
+    </div>
+    }
+</div>
