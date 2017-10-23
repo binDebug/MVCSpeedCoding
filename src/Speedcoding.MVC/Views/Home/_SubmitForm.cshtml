@@ -1,0 +1,97 @@
+﻿@model Speedcoding.MVC.Models.Person
+
+<div class="c-content__agent-form l-col l-col-4">
+    <div class="l-box">
+        <!-- This needs to be replaced by an ajax form -->
+        <form class="l-form l-contact-agent-form">
+
+            <div class="l-form__holder">
+                <h5>Contact @Model.FirstName</h5>
+
+                <div class="l-form__inner">
+
+                    <div class="l-form-row h-clearfix">
+                        <div class="l-form-group">
+                            <input type="text" class="l-form-control" id="inputFirstName_ContactAgentForm" required="">
+                            <label for="inputFirstName_ContactAgentForm" class="l-form-label">first name</label>
+                            <span class="l-form-control-focus"></span>
+                        </div>
+                    </div>
+                    <div class="l-form-row h-clearfix">
+                        <div class="l-form-group">
+                            <input type="text" class="l-form-control" id="inputLastName_ContactAgentForm" required="">
+                            <label for="inputLastName_ContactAgentForm" class="l-form-label">last name</label>
+                            <span class="l-form-control-focus"></span>
+                        </div>
+                    </div>
+                    <div class="l-form-extra">
+                        <div class="l-form-row h-clearfix">
+                            <div class="l-form-group">
+                                <input type="email" class="l-form-control" id="inputEmail_ContactAgentForm" required="">
+                                <label for="inputEmail_ContactAgentForm" class="l-form-label">email</label>
+                                <span class="l-form-control-focus"></span>
+                            </div>
+                        </div>
+                        <div class="l-form-row h-clearfix">
+                            <div class="l-form-group">
+                                <input type="text" class="l-form-control" id="inputPhone_ContactAgentForm" required="">
+                                <label for="inputPhone_ContactAgentForm" class="l-form-label">phone</label>
+                                <span class="l-form-control-focus"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-form-row h-clearfix">
+                        <div class="l-form-group l-form-group--textarea">
+                            <textarea class="l-form-control" id="areaComment_ContactAgentForm" required=""></textarea>
+                            <label for="areaComment_ContactAgentForm" class="l-form-label">comment</label>
+                            <span class="l-form-control-focus"></span>
+                        </div>
+                    </div>
+                    <div class="l-form-row l-form-row--submit l-row--center">
+                        <button type="submit" class="l-btn l-btn-primary">Submit</button>
+                        <div class="l-form__buttons h-clearfix">
+                            <a href="#" class="l-btn l-btn--action l-btn--gray">Call</a>
+                            <a href="#" class="l-btn l-btn--action l-btn--gray">Leave Review</a>
+                        </div>
+                        <div id="SubmitMessage"></div>
+                        <div class="l-form-text">
+                            <a href="#">www.crosbyrealestate.com</a>
+                        </div>
+                        <ul class="l-list l-list--social c-content__agent-form-social">
+                            <li>
+                                <a href="#" target="_blank">
+                                    <span class="l-list--social__icon">
+                                        <img src="images/social/icon-twitter-agent.svg" alt="">
+                                    </span>
+                                    <span class="l-list--social__icon--hover">
+                                        <img src="images/social/icon-twitter-agent-dark.svg" alt="">
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <span class="l-list--social__icon">
+                                        <img src="images/social/icon-facebook-agent.svg" alt="">
+                                    </span>
+                                    <span class="l-list--social__icon--hover">
+                                        <img src="images/social/icon-facebook-agent-dark.svg" alt="">
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <span class="l-list--social__icon">
+                                        <img src="images/social/icon-linkedin-agent.svg" alt="">
+                                    </span>
+                                    <span class="l-list--social__icon--hover">
+                                        <img src="images/social/icon-linkedin-agent-dark.svg" alt="">
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

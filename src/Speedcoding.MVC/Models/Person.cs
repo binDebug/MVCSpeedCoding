@@ -21,7 +21,7 @@ namespace Speedcoding.MVC.Models
 
         public IList<string> LicenseNumbers { get; set; }
 
-        public IList<Property> ActiveListings { get; set; }
+        public IList<ListedProperty> ActiveListings { get; set; }
 
         public IList<Review> Reviews { get; set; }
 

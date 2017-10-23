@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Speedcoding.MVC.Repository
 {
+    /// <summary>
+    /// This class needs to be replaced by the API
+    /// </summary>
     public class Repository
     {
         public Repository()
@@ -14,8 +17,12 @@ namespace Speedcoding.MVC.Repository
 
         public Person GetPerson()
         {
-            Person person = null;
-
+            Person person = new Person();
+            this.PopulatePersonDetails(person);
+            person.Reviews = this.GetReviews();
+            person.PastSales = this.GetPastSales();
+            person.ActiveListings = this.GetActiveListing();
+            this.PopulateAverageReview(person);
             return person;
         }
 
@@ -47,6 +54,8 @@ namespace Speedcoding.MVC.Repository
             Sale newProperty = new Sale
             {
                 ID = 1,
+                Price = 900000,
+
                 Property = new Property
                 {
                     ID = 1,
@@ -54,7 +63,6 @@ namespace Speedcoding.MVC.Repository
                     NoBath = 4,
                     Area = 6150,
                     AreaUnit = "sqft",
-                    Price = 900000,
 
                     Location = new Location
                     {
@@ -81,6 +89,7 @@ namespace Speedcoding.MVC.Repository
             newProperty = new Sale
             {
                 ID = 2,
+                Price = 490000,
                 Property = new Property
                 {
                     ID = 2,
@@ -88,7 +97,6 @@ namespace Speedcoding.MVC.Repository
                     NoBath = (decimal)5.5,
                     Area = 5505,
                     AreaUnit = "sqft",
-                    Price = 490000,
 
                     Location = new Location
                     {
@@ -139,8 +147,7 @@ namespace Speedcoding.MVC.Repository
                             Path="home12.jpg",
                             IsDefault=true
                         }
-                    },
-                    Price = 529000,
+                    }
                 },
                 PurchasedDate = new DateTime(2017, 09, 11),
                 RepresentedBy = "Buyer"
@@ -172,8 +179,7 @@ namespace Speedcoding.MVC.Repository
                             Path="home6.jpg",
                             IsDefault=true
                         }
-                    },
-                    Price = 555000,
+                    }
                 },
                 PurchasedDate = new DateTime(2017, 07, 11),
 
@@ -206,8 +212,7 @@ namespace Speedcoding.MVC.Repository
                             Path="home7.jpg",
                             IsDefault=true
                         }
-                    },
-                    Price = 1265000,
+                    }
                 },
                 PurchasedDate = new DateTime(2017, 07, 07),
 
@@ -249,8 +254,7 @@ namespace Speedcoding.MVC.Repository
                             City = "El Cajon",
                             State = "CA",
                             Zip = "92020"
-                        },
-                        Price = 529000,
+                        }
                     },
                     PurchasedDate = new DateTime(2017, 09, 11),
                     RepresentedBy = "Buyer"
@@ -288,7 +292,6 @@ namespace Speedcoding.MVC.Repository
                             State = "CA",
                             Zip = "92020"
                         },
-                        Price = 529000,
                     },
                     PurchasedDate = new DateTime(2017, 09, 11),
                     RepresentedBy = "Buyer"
@@ -412,6 +415,17 @@ namespace Speedcoding.MVC.Repository
 
         private void PopulateAverageReview(Person person)
         {
+            if ((person != null) &&
+                (person.Reviews != null) &&
+                (person.Reviews.Count > 0))
+                person.AverageReview = new Review
+                {
+                    LocalKnowledge = person.Reviews.Average(p => p.LocalKnowledge),
+                    Expertise = person.Reviews.Average(p => p.Expertise),
+                    Responsiveness = person.Reviews.Average(p => p.Responsiveness),
+                    NegotiationSkills = person.Reviews.Average(p => p.NegotiationSkills),
+                    Average = person.Reviews.Average(p => p.Average)
+                };
         }
     }
 }

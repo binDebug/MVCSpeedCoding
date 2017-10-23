@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Speedcoding.MVC.Helpers;
+using Speedcoding.MVC.Models;
 
 namespace Speedcoding.MVC.Controllers
 {
@@ -10,26 +12,9 @@ namespace Speedcoding.MVC.Controllers
     {
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            ApiHelper helper = new ApiHelper();
+            Person person = helper.Get();
+            return View(person);
         }
     }
 }

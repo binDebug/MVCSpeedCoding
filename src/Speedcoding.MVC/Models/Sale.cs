@@ -11,6 +11,8 @@ namespace Speedcoding.MVC.Models
 
         public Property Property { get; set; }
 
+        public int Price { get; set; }
+
         public DateTime PurchasedDate { get; set; }
 
         public string RepresentedBy { get; set; }
