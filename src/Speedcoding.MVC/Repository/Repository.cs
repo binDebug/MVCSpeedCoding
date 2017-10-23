@@ -273,7 +273,7 @@ namespace Speedcoding.MVC.Repository
                 Responsiveness = (decimal)5.0,
                 NegotiationSkills = (decimal)4.1,
                 Average = (decimal)4.5,
-
+                ReviewDate = new DateTime(2017, 09, 24),
                 ReviewdBy = "russroberts",
                 Property = new Sale
                 {
@@ -311,6 +311,7 @@ namespace Speedcoding.MVC.Repository
                 Responsiveness = (decimal)5.0,
                 NegotiationSkills = (decimal)4.1,
                 Average = (decimal)4.5,
+                ReviewDate = new DateTime(2017, 09, 24),
                 ReviewdBy = "russroberts",
                 Property = new Sale
                 {

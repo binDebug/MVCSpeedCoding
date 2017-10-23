@@ -1,0 +1,150 @@
+﻿@model IList<Speedcoding.MVC.Models.Review>
+
+<div class="c-content__filter c-content__filter--reviews h-clearfix">
+    <div class="l-col l-col-4 l-col-xs-6">
+        <div class="jq-selectbox jqselect l-form-control l-form-select l-form-elem-custom changed" id="reviewType_ReviewFilter-styler">
+            <select class="l-form-control l-form-select l-form-elem-custom" id="reviewType_ReviewFilter">
+                <option>All reviews (@Model.Count)</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <div class="jq-selectbox__select">
+                <div class="jq-selectbox__select-text">5</div>
+                <div class="jq-selectbox__trigger">
+                    <div class="jq-selectbox__trigger-arrow"></div>
+                </div>
+            </div>
+            <div class="jq-selectbox__dropdown" style="display: none;">
+                <ul>
+                    <li style="">All reviews (@Model.Count)</li>
+                    <li style="">1</li>
+                    <li style="">2</li>
+                    <li style="">3</li>
+                    <li style="">4</li>
+                    <li class="selected sel" style="">5</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="l-col l-col-4 l-col-xs-6">
+        <div class="jq-selectbox jqselect l-form-control l-form-select l-form-elem-custom" id="reviewOrder_ReviewFilter-styler">
+            <select class="l-form-control l-form-select l-form-elem-custom" id="reviewOrder_ReviewFilter">
+                <option>Newest first</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <div class="jq-selectbox__select">
+                <div class="jq-selectbox__select-text">Newest first</div>
+                <div class="jq-selectbox__trigger">
+                    <div class="jq-selectbox__trigger-arrow"></div>
+                </div>
+            </div>
+            <div class="jq-selectbox__dropdown" style="display: none;">
+                <ul>
+                    <li class="selected sel" style="">Newest first</li>
+                    <li style="">1</li>
+                    <li style="">2</li>
+                    <li style="">3</li>
+                    <li style="">4</li>
+                    <li style="">5</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="l-col l-col-4 h-hide-on-mobile">
+        <button type="button" class="l-btn l-btn--action l-btn--blue">Write a Review</button>
+    </div>
+</div>
+<div class="c-content__reviews">
+    @if ((Model != null) && (Model.Count > 0))
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            <div class="c-content__review-item">
+                <div class="c-content__review-summary">
+                    <div class="c-content__review-info">
+                        <div class="c-content__review-date">
+                            @Model[i].ReviewDate.ToString("MM/dd/yyyy")
+                        </div>
+                        <div class="c-content__review-meta h-hide-on-desktop">
+                            <div class="c-content__review-author">
+                                Reviewed by: @Model[i].ReviewdBy
+                            </div>
+                            <div class="c-content__review-home">
+                                Bought a home in @Model[i].Property.PurchasedDate.ToString("yyyy") in @Model[i].Property.Property.Location.City, @Model[i].Property.Property.Location.State
+                            </div>
+                        </div>
+                        <div class="c-content__rating c-content__rating--review">
+                            <div class="c-content__rating-stars">
+                                @for (int j = 0; j < Math.Floor(Model[i].Average); j++)
+                                {
+                                    <span class="c-content__rating-star c-content__rating-star--full"></span>
+                                }
+                                @for (int k = 0; k < (Math.Ceiling(Model[i].Average) - Math.Floor(Model[i].Average)); k++)
+                                {
+
+                                    <span class="c-content__rating-star c-content__rating-star--half-full"></span>
+                                }
+                        </div>
+                        <div class="c-content__rating-info">
+                            <div class="c-content__review-average">@Model[i].Average</div>
+                        </div>
+                    </div>
+                    <div class="c-content__review-meta h-hide-on-mobile">
+                        <div class="c-content__review-author">
+                            Reviewed by: @Model[i].ReviewdBy
+                        </div>
+                        <div class="c-content__review-home">
+                            Bought a home in @Model[i].Property.PurchasedDate.ToString("yyyy") in @Model[i].Property.Property.Location.City, @Model[i].Property.Property.Location.State
+                        </div>
+                    </div>
+                </div>
+                <div class="c-content__skill-bars c-content__skill-bars--review">
+                    <div class="c-content__skill-bar">
+                        <div class="c-content__skill-bar-title">Local knowledge</div>
+                        <div class="c-content__skill-bar-average">@Model[i].LocalKnowledge</div>
+                        <div class="c-content__skill-bar-row--default">
+                            <div class="c-content__skill-bar-row" style="width:@Model[i].LocalKnowledgePercentage%;"></div>
+                        </div>
+                    </div>
+                    <div class="c-content__skill-bar">
+                        <div class="c-content__skill-bar-title">Process expertise</div>
+                        <div class="c-content__skill-bar-average">@Model[i].Expertise</div>
+                        <div class="c-content__skill-bar-row--default">
+                            <div class="c-content__skill-bar-row" style="width:@Model[i].ExpertisePercentage%;"></div>
+                        </div>
+                    </div>
+                    <div class="c-content__skill-bar">
+                        <div class="c-content__skill-bar-title">Responsiveness</div>
+                        <div class="c-content__skill-bar-average">@Model[i].Responsiveness</div>
+                        <div class="c-content__skill-bar-row--default">
+                            <div class="c-content__skill-bar-row" style="width:@Model[i].ResponsivenessPercentage%;"></div>
+                        </div>
+                    </div>
+                    <div class="c-content__skill-bar">
+                        <div class="c-content__skill-bar-title">Negotiation Skills</div>
+                        <div class="c-content__skill-bar-average">@Model[i].NegotiationSkills</div>
+                        <div class="c-content__skill-bar-row--default">
+                            <div class="c-content__skill-bar-row" style="width:@Model[i].NegotiationSkillsPercentage%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-content__review-content">
+                @Model[i].Description.Substring(0, Model[i].Description.IndexOf(" ", 200))
+                @if (Model[i].Description.Length > 200)
+                {
+                <a class="l-toggle-content-link" href="#">More</a>
+                }
+            </div>
+        </div>
+        }
+    }
+
+</div>
